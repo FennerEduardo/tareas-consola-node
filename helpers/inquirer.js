@@ -63,7 +63,27 @@ const pausa = async () => {
         }
     ])
 }
+
+const leerInput = async (message) => {
+    // console.log('\n');
+    return { desc } = await inquirer.prompt([
+        {
+            type: 'input',
+            name: 'desc',
+            message,
+            validate(value) {
+                if (value.length === 0) {
+                    return 'Por favor ingrese un valor'
+                }
+                return true
+            }
+
+        }
+    ])
+}
+
 module.exports = {
     inquirerMenu,
-    pausa
+    pausa,
+    leerInput
 }
